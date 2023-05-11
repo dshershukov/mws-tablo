@@ -1,0 +1,29 @@
+.control-panel {
+    background: $background-color;
+    font-family: Times New Roman, Times, serif;
+}
+.tablo {
+    background: $background-color;
+    color: rgba(253, 225, 24, 1);
+    font-family: Times New Roman, Times, serif;
+}
+.control-title {
+    text-align: center;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: $fount-size-h1-small;
+    @media(min-width: 768px) {
+        font-size: $fount-size-h1;
+    }
+}
+.wrapper {
+    margin: 0 auto;
+    padding: 20px 15px 0;
+    position: relative;
+    max-width: $screen-width-max;
+    font-size: $fount-size-content-small;
+    @media(min-width: 768px) {
+        font-size: $fount-size-content;
+        padding: 50px 30px 0;
+    }
+}

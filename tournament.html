@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <script type="application/javascript" src="./js/combobox.js"></script>
+        <script type="application/javascript" src="./js/googleSheets.js"></script>
+        <script type="application/javascript" src="./js/tournament.js"></script>
+
+        <script src="./js/jquery-3.1.1.js"></script>
+        <script src="./bootstrap/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./bootstrap/css/bootstrap-theme.min.css">
+
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
+        <link rel="stylesheet" type="text/css" href="./css/googleSheets.css">
+    </head>
+    <body  class="control-panel" onload="init()" onkeypress="hotKeys(event)">
+        <div class="wrapper">
+            <!--<h1 class="control-title">GoldenFalcon 2.1.2</h1>-->
+            <div class="control-timer">
+                <input id="timer" value="01:30" onchange="saveState()" onkeypress="event.stopPropagation()"/>
+                <button id="startTimer" class="btn btn-circle btn-control-timer btn-start" type="button"
+                        title="Play" value="" onclick="return startTimer()" onfocus="this.blur()"></button>
+                <button id="stopTimer" class="btn btn-circle btn-control-timer btn-stop" type="button"
+                        title="Pause" value="" onclick="stopTimer()" onfocus="this.blur()"></button>
+                <button id="resetTimer" class="btn btn-circle btn-control-timer btn-reset" type="button"
+                        title="Stop" value="" onclick="resetTimer()" onfocus="this.blur()"></button>
+                <button class="btn btn-score btn-up1" type="button" value="" onclick="addTime(1)" onfocus="this.blur()"></button>                        
+                <button class="btn btn-score btn-down1" type="button" value="" onclick="addTime(-1)" onfocus="this.blur()"></button>
+            </div>
+
+            <div class="control-tablo">
+                <div class="fighter fighter-left" id="fighter-left">
+                    <div class="combobox">
+                        <input type="text" name="comboboxfieldname" id="firstFighterName" onchange="saveState()" stopPropagate="true">
+                        <!--<button class="btn btn-score btn-dropdown" id="picker"></button>
+                        <div class="dropdownlist">
+                            <a>Боец справа</a>
+                        </div>-->
+                    </div>
+                    <div class="btn-score-group">
+                        <input class="control-score" type="number" id="firstFighter" value="0" readonly="true"/>
+                        <button class="btn btn-score btn-zero" type="button" value="" onclick="zeroFirst()" onfocus="this.blur()"></button>
+                    </div>
+                    <div class="btn-score-group">
+                        <div class="btn-score-row">
+                            <label>HP</label>
+                        </div>
+                        <div class="btn-score-row">
+                            <button class="btn btn-score btn-up1" type="button" value="" onclick="addFirst(1)" onfocus="this.blur()"></button>
+                            <div id="totalHP-1" class="fight-btn fighter-warnings">0</div>
+                            <button class="btn btn-score btn-down1" type="button" value="" onclick="addFirst(-1)" onfocus="this.blur()"></button>
+                        </div>
+                    </div>
+                    <div class="btn-score-group warnings-border">
+                        <div class="btn-score-row">
+                            <label>Предупреждения</label>
+                        </div>
+                        <div class="btn-score-row">
+                            <button class="btn btn-score btn-up1" type="button" value="" onclick="addFirstWarning(1)" onfocus="this.blur()"></button>
+                            <div id="warnings-1" class="fight-btn fighter-warnings">0</div>
+                            <button class="btn btn-score btn-down1" type="button" value="" onclick="addFirstWarning(-1)" onfocus="this.blur()"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fighter fighter-right" id="fighter-right">
+                        <div class="combobox">
+                            <input type="text" name="comboboxfieldname" id="secondFighterName" onchange="saveState()" stopPropagate="true"/>
+                            <!--<button class="btn btn-score btn-dropdown" id="picker"></button>
+                            <div class="dropdownlist">
+                                <a>Боец слева</a>
+                            </div>-->
+                        </div>
+                    <div class="btn-score-group">
+                        <input class="control-score" type="number" id="secondFighter" value="0" readonly="true"/>
+                        <button class="btn btn-score btn-zero" type="button" value="" onclick="zeroSecond()" onfocus="this.blur()"></button>
+                    </div>
+                    <div class="btn-score-group">
+                        <div class="btn-score-row">
+                            <label>HP</label>
+                        </div>
+                        <div class="btn-score-row">
+                            <button class="btn btn-score btn-up1" type="button" value="" onclick="addSecond(1)" onfocus="this.blur()"></button>
+                            <div id="totalHP-2" class="fight-btn fighter-warnings">0</div>
+                            <button class="btn btn-score btn-down1" type="button" value="" onclick="addSecond(-1)" onfocus="this.blur()"></button>
+                        </div>
+                    </div>
+                    <div class="btn-score-group warnings-border">
+                        <div class="btn-score-row">
+                            <label>Предупреждения</label>
+                        </div>
+                        <div class="btn-score-row">
+                            <button class="btn btn-score btn-up1" type="button" value="" onclick="addSecondWarning(1)" onfocus="this.blur()"></button>
+                            <div id="warnings-2" class="fight-btn fighter-warnings">0</div>
+                            <button class="btn btn-score btn-down1" type="button" value="" onclick="addSecondWarning(-1)" onfocus="this.blur()"></button>
+                        </div>
+                    </div>
+                </div>
+
+            <button class="btn btn-score btn-swap" type="button" value=""
+                        title="swap" onclick="changeFighterPlaces()"></button>
+            </div>
+
+            <div class="control-round">
+                <div>
+                    <div class="btn btn-default fight-btn upload-fight-btn" onclick="autoScore()">
+                        Привести счёт
+                    </div>
+                </div>
+                <div>
+                    <span>Обоюдные поражения</span> <input id="mutualHits" value="0" type="number" onchange="changeMutualHits()"/>
+                    <div class="btn-group-round">
+                        <button class="btn btn-round" type="button" onclick="addMutualHits(1)" id="incrementMutualHits" onfocus="this.blur()">
+                            <span class="glyphicon glyphicon-triangle-top"></span>
+                        </button>
+                        <button class="btn btn-round" type="button" onclick="addMutualHits(-1)" id="decrementMutualHits" onfocus="this.blur()">
+                            <span class="glyphicon glyphicon-triangle-bottom"></span>
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <span>Раунд</span> <input id="roundNumber" value="0" type="number" onchange="saveState()"/>
+                    <div class="btn-group-round">
+                        <button class="btn btn-round" type="button" onclick="addRoundNumber(1)" id="incrementRoundNumber" onfocus="this.blur()">
+                            <span class="glyphicon glyphicon-triangle-top"></span>
+                        </button>
+                        <button class="btn btn-round" type="button" onclick="addRoundNumber(-1)" id="decrementRoundNumber" onfocus="this.blur()">
+                            <span class="glyphicon glyphicon-triangle-bottom"></span>
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <div class="btn btn-default fight-btn upload-fight-btn" onclick="uploadData()">
+                        Сохранить бой
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-other">
+                <button class="btn btn-circle btn-reset-all" type="button" value=""
+                        title="Reset"
+                        onclick="resetAll()" onfocus="this.blur()"></button>
+                <button class="btn btn-circle btn-list" type="button"
+                        title="List of participants"
+                        data-toggle="modal" data-target="#listModal" onfocus="this.blur()"></button>
+                <button class="btn btn-circle btn-help" type="button"
+                        title="Help"
+                        data-toggle="modal" data-target="#helpModal" onfocus="this.blur()"></button>
+                <button class="btn btn-circle btn-options" type="button"
+                        title="Options"
+                        data-toggle="modal" data-target="#optionsModal" onfocus="this.blur()"></button>
+                <button class="btn btn-circle btn-tablo" type="button"
+                        title="Open scoreboard"
+                        value="" onclick="ow()" onfocus="this.blur()"></button>
+            </div>
+
+            <div class="modal fade" id="listModal" tabindex="-1" role="dialog" aria-labelledby="listModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onfocus="this.blur()"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="listModalLabel">Выбор боя</h4>
+                            <button id="authorize_button" style="display: none;">Authorize</button>
+                            <button id="signout_button" style="display: none;">Sign Out</button>
+                        </div>
+                        <div class="modal-body modal-list">
+                            <textarea class="spreadsheet-input"rows="1" cols="50" id="spreadsheetId" placeholder="Идентификатор таблицы с данными турнира" onfocus="disableHotkeys()" onblur="enableHotkeys()"></textarea>
+                        </div>
+                        <div class="modal-body modal-list">
+                            <label>Лист:</label>
+                            <select id="sheetName" placeholder="Лист в таблице" onfocus="disableHotkeys()" onblur="enableHotkeys()" onChange="loadFights()"></select>
+                            <button type="button" class="btn btn-default fight-btn" onclick="loadLists()">Загрузить листы</button>
+                            <button type="button" class="btn btn-default fight-btn" onclick="loadFights()">Обновить выбраный лист</button>
+                        </div>
+                        <div class="modal-body modal-list">
+                            <p>Бои:</p>
+                            <div class="fights-header">
+                                <div class="fights-header-blue">Синий HP Баллы Пред.</div>
+                                <div>Обоюдки</div>
+                                <div class="fights-header-red">Пред. Баллы HP Красный</div>
+                            </div>
+                            <div id="loadedFights" style="white-space: pre-wrap;"></div>
+                        </div>
+                        
+                        <div class="modal-footer">
+                        <!--    <button type="button" class="btn btn-default" data-dismiss="modal" onfocus="this.blur()" onclick="saveListFighters()">Save</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onfocus="this.blur()"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="helpModalLabel">Help</h4>
+                        </div>
+                        <div class="modal-body modal-help">
+                            <p>Hot keys:
+                                <ul>
+                                    <li>Q/Z - плюс/минус 1 балл левому бойцу</li>
+                                    <li>W/X - плюс/минус 1 предупреждение левому бойцу</li>
+                                    <li>R/V - плюс/минус 1 обоюдное поражение</li>
+                                    <li>Y/N - плюс/минус 1 предупреждение правому бойцу</li>
+                                    <li>U/M - плюс/минус 1 балл правому бойцу</li>
+                                    <li>[ - увеличить номер раунда</li>
+                                    <li>] - уменьшить номер раунда</li>
+                                    <li>+/- - добавить/вычесть секунду из таймера</li>
+                                    <li>space - остановить/пустить таймер</li>
+                                    <li>L - поменять бойцов местами</li>
+                                    <li>Shift + 1,2,3,4,5,6,7,8,9,0 - сохранить время в слот</li>
+                                    <li>1,2,3,4,5,6,7,8,9,0 - загрузить время из слота</li>
+                                </ul>
+                            </p>
+                            <p>
+                                (c) Гнездилов Илья, 2017 год, специально для спортивного клуба «Золотой сокол»,
+                                свободно для некоммерческого распространения и использования на территории России
+                                и стран СНГ.<br>
+                                Разработка:<br>
+                                JavaScript - Гнездилов Илья<br>
+                                Веб-разметка - Гнездилова Ксения
+                            </p>
+                            <p>
+                                Тяжёлый и тёмный 2020-ый год. Для клуба Men with Swords были прикручены
+                                Google Sheets. <br>
+                                Славный парень и разработчик - Казаков Иван
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" onfocus="this.blur()">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="optionsModal" tabindex="-1" role="dialog" aria-labelledby="optionsModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onfocus="this.blur()"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="optionsModalLabel">Options</h4>
+                        </div>
+                        <div class="modal-body options-menu">
+                            <label>
+                                <input class="control-invert" id="invert" type="checkbox" checked="true" onchange="invertChange()"/>
+                                Поменять местами бойцов на табло
+                            </label> <!--
+                            <label>
+                                <input class="control-invert" id="showRoundNumber" type="checkbox" checked="false" onchange="changeShowRoundNumber()"/>
+                                Show round number
+                            </label> -->
+                            <label>
+                                Время по умолчанию:
+                                <input class="control-time" id="defaultTime" value="01:30"/>
+                            </label>
+                            <label>
+                                Приводить счёт до:
+                                <input class="control-time" id="autoScore" value="-7"/>
+                            </label>
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" onfocus="this.blur()">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <script async defer src="https://apis.google.com/js/api.js"
+          onload="this.onload=function(){};handleClientLoad()"
+          onreadystatechange="if (this.readyState === 'complete') this.onload()">
+        </script>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="application/javascript" src="../js/view.js"></script>
+
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/googleSheets.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body class="tablo invert" onload="loadState()">
+    <div class="wrapper">
+        <div class="tablo-header">
+<!--            <div class="logo-holder">
+                <img class="tablo-logo" src="../img/logo-mws.png" alt="">
+            </div> -->
+            <div class="totalHP">HP</div>
+            <div class="totalHP" id="leftFighterTotalHP">35</div>
+            <div class="timer" id="timerWindow">
+                00:00
+            </div>
+            <div class="totalHP">HP</div>
+            <div class="totalHP" id="rightFighterTotalHP">HP 35</div>
+<!--            <div class="logo-holder-ge">
+                <img class="tablo-logo" src="../img/logo-ge.png" alt="">
+            </div> -->
+        </div>
+        <div class="score-tablo">
+            <div class="fighter fighter-left">
+                <div class="fighter-name" id="leftFighterName">Боец 1</div>
+                <div class="score score-left" id="leftFighter">0</div>
+            </div>
+            
+            <div class="columd-middle hidden-xs">
+                <img class="tablo-logo" src="../img/logo-mws.png" alt="">
+            </div>
+
+            <div class="fighter fighter-right">
+                <div class="fighter-name" id="rightFighterName">Боец 2</div>
+                <div class="score score-right" id="rightFighter">0</div>
+            </div>
+        </div>
+
+        <div class="round-tablo" id="roundNumber">Раунд 1</div>
+    </div>
+</body>
+</html>

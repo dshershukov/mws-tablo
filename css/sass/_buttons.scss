@@ -1,0 +1,222 @@
+.btn {
+    border-radius: 5px;
+}
+.btn-circle {
+    border-width: 2px;
+    border-top-color: rgb(221, 221, 221);
+    border-left-color: rgb(221, 221, 221);
+    border-bottom-color: rgb(137, 137, 137);
+    border-right-color: rgb(137, 137, 137);
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.7);
+    background-repeat: no-repeat;
+    background-size: cover;
+    @media(min-width: 768px) {
+        height: 55px;
+        width: 55px;
+    }
+    &:focus,
+    &:hover,
+    &:active,
+    &.active.focus,
+    &.active:focus,
+    &:active.focus,
+    &:active:focus {
+        outline: none;
+    }
+    &:active {
+        background-color: rgba(255, 255, 255, 0.6);
+        border-top-color: rgb(137, 137, 137);
+        border-left-color: rgb(137, 137, 137);
+        border-bottom-color: rgb(221, 221, 221);
+        border-right-color: rgb(221, 221, 221);
+    }
+}
+.btn-control-timer {
+    background-image: url('../img/pps.png');
+    &:active {
+        background-image: url('../img/pps.png');
+    }
+}
+.btn-start {
+    background-position: center;
+}
+.btn-stop {
+    background-position: left;
+}
+.btn-reset {
+    background-position: right;
+}
+.btn-control-tablo {
+    min-width: 52px;
+    max-width: 52px;
+}
+.btn-score {
+    padding: 16px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 36px;
+    background-color: rgba(255, 255, 255, 0.7);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-width: 2px;
+    border-top-color: rgb(221, 221, 221);
+    border-left-color: rgb(221, 221, 221);
+    border-bottom-color: rgb(137, 137, 137);
+    border-right-color: rgb(137, 137, 137);
+    @media(min-width: 768px) {
+        padding: 27px;
+        font-size: 18pt;
+        margin-bottom: 15px;
+        max-width: 58px;
+    }
+    &:focus,
+    &:hover,
+    &:active,
+    &.active.focus,
+    &.active:focus,
+    &:active.focus,
+    &:active:focus {
+        outline: none;
+    }
+    &:active {
+        background-color: rgba(255, 255, 255, 0.6);
+        border-top-color: rgb(137, 137, 137);
+        border-left-color: rgb(137, 137, 137);
+        border-bottom-color: rgb(221, 221, 221);
+        border-right-color: rgb(221, 221, 221);
+    }
+    &.btn-zero {
+        margin-left: 10px;
+    }
+}
+.btn-zero {
+    background-image: url('../img/0.png');
+    &:active {
+        background-image: url('../img/0.png');
+    }
+}
+.btn-up1 {
+    background-image: url('../img/p1.png');
+    &:active {
+        background-image: url('../img/p1.png');
+    }
+}
+.btn-up2 {
+    background-image: url('../img/p2.png');
+    &:active {
+        background-image: url('../img/p2.png');
+    }
+}
+.btn-up3 {
+    background-image: url('../img/p3.png');
+    &:active {
+        background-image: url('../img/p3.png');
+    }
+}
+.btn-down1 {
+    background-image: url('../img/m1.png');
+    &:active {
+        background-image: url('../img/m1.png');
+    }
+}
+.btn-down2 {
+    background-image: url('../img/m2.png');
+    &:active {
+        background-image: url('../img/m2.png');
+    }
+}
+.btn-down3 {
+    background-image: url('../img/m3.png');
+    &:active {
+        background-image: url('../img/m3.png');
+    }
+}
+.btn-swap {
+    padding: 15px;
+    background-image: url('../img/swap.png');
+    &:active {
+        background-image: url('../img/swap.png');
+    }
+}
+.btn-reset-all {
+    margin-bottom: 50px;
+    background-image: url('../img/reset.png');
+    @media(min-width: 768px) {
+        margin-bottom: 100px;
+    }
+    &:active {
+        background-image: url('../img/reset.png');
+    }
+}
+.btn-list {
+    margin-bottom: 10px;
+    background-image: url('../img/list.png');
+    @media(min-width: 768px) {
+        margin-bottom: 20px;
+    }
+    &:active {
+        background-image: url('../img/list.png');
+    }
+}
+.btn-help {
+    margin-bottom: 10px;
+    background-image: url('../img/help.png');
+    @media(min-width: 768px) {
+        margin-bottom: 20px;
+    }
+    &:active {
+        background-image: url('../img/help.png');
+    }
+}
+.btn-options {
+    margin-bottom: 10px;
+    background-image: url('../img/option.png');
+    @media(min-width: 768px) {
+        margin-bottom: 20px;
+    }
+    &:active {
+        background-image: url('../img/option.png');
+    }
+}
+.btn-tablo {
+    margin-bottom: 10px;
+    background-image: url('../img/run.png');
+    @media(min-width: 768px) {
+        margin-bottom: 20px;
+    }
+    &:active {
+        background-image: url('../img/run.png');
+    }
+}
+.btn-dropdown {
+    background-image: url('../img/dropdown.png');
+    border-radius: 0 5px 5px 0;
+    &:active {
+        background-image: url('../img/dropdown.png');
+    }
+}
+.btn-round {
+    padding: 0 10px;
+    font-size: 14pt;
+    height: 28px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-width: 2px;
+    border-top-color: rgb(221, 221, 221);
+    border-left-color: rgb(221, 221, 221);
+    border-bottom-color: rgb(137, 137, 137);
+    border-right-color: rgb(137, 137, 137);
+    &:active {
+        background-color: rgba(255, 255, 255, 0.6);
+        border-top-color: rgb(137, 137, 137);
+        border-left-color: rgb(137, 137, 137);
+        border-bottom-color: rgb(221, 221, 221);
+        border-right-color: rgb(221, 221, 221);
+    }
+    & + .btn-round {
+        margin-top: 5px;
+    }
+}

@@ -1,0 +1,29 @@
+.control-round {
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+    font-size: 25pt;
+    @media(min-width: 768px) {
+        justify-content: center;
+    }
+    > span {
+        margin-right: 10px;
+        color: rgba(255, 255, 255, 0.7);
+    }
+    > input {
+        padding: 5px 10px;
+        border-radius: 5px;
+        width: 80px;
+        max-width: 80px;
+        margin-right: 5px;
+        @media(min-width: 768px) {
+            padding: 10px 15px;
+            font-size: 20pt;
+            max-width: 100px;
+        }
+    }
+    .btn-group-round {
+        display: flex;
+        flex-direction: column;
+    }
+}

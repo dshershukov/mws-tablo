@@ -1,0 +1,105 @@
+.control-tablo {
+    position: relative;
+    padding-right: 45px;
+    display: flex;
+    flex-direction: column;
+    @media(min-width: 768px) {
+        flex-direction: row;
+        justify-content: space-between;
+        padding-right: 85px;
+    }
+    .fighter {
+        width: 100%;
+        display: flex;
+        padding: 15px;
+        flex-direction: column;
+        @media(min-width: 768px) {
+            max-width: 50%;
+            padding: 40px;
+        }
+    }
+    .fighter-right {
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(188, 29, 28, 0.5));
+        @media(min-width: 768px) {
+            background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(188, 29, 28, 0.5));
+        }
+    }
+    .fighter-left {
+        background: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 21, 255, 0.5));
+        @media(min-width: 768px) {
+            background: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 21, 255, 0.5));
+        }
+    }
+    .btn-score-group {
+        display: flex;
+        justify-content: space-between;
+        & + .btn-score-group {
+            display: flex;
+            flex-direction: column;
+            @media(min-width: 375px) {
+                flex-direction: row;
+            }
+            @media(min-width: 768px) {
+                flex-direction: column;
+            }
+            @media(min-width: 1100px) {
+                flex-direction: row;
+            }
+        }
+    }
+    .btn-score-row {
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        @media(min-width: 375px) {
+            flex-direction: row;
+            max-width: calc(40% + 21.6px);
+        }
+        @media(min-width: 768px) {
+            flex-direction: row-reverse;
+            max-width: 100%;
+        }
+        @media(min-width: 1100px) {
+            flex-direction: row;
+            max-width: calc(40% + 34.8px);
+        }
+        & + .btn-score-row {
+            flex-direction: row;
+            @media(min-width: 768px) {
+                flex-direction: row;
+            }
+        }
+    }
+    input, select {
+       padding: 5px 10px;
+       margin-bottom: 10px;
+       border-radius: 5px;
+       width: 100%;
+       @media(min-width: 768px) {
+           padding: 10px 15px;
+           font-size: 18pt;
+           margin-bottom: 15px;
+       }
+   }
+   .control-score {
+       max-width: calc(50% + 15px);
+       @media(min-width: 375px) {
+           max-width: calc(80% + 7.2px);
+       }
+       @media(min-width: 768px) {
+           max-width: calc(50% + 29px);
+       }
+       @media(min-width: 1100px) {
+           max-width: calc(80% + 11.6px);
+       }
+   }
+   .btn-swap {
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(calc(-50% - 42.5px), -50%);
+       margin: 0;
+       max-width: 30px;
+   }
+}

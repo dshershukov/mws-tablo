@@ -1,0 +1,115 @@
+.spreadsheet-input {
+    text-align: center;
+    vertical-align: middle;
+    height: 38px;
+}
+
+.fight-div {
+    padding: 5px;
+}
+
+.fight-btn {
+    padding: 5px;
+    
+    border: 1px solid black;
+    border-radius: 5px;
+    background: white;
+}
+
+.select-fight-btn {
+    display: inline-block;
+    
+    width: 19.9%;
+}
+
+.fight-descr-div {
+    display: inline-block;
+    width: 80%;
+}
+
+.fight-descr-val {
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+}
+.fight-descr-val-0 {
+    width: 32.5%;
+}
+
+.fight-descr-val-1 {
+    width: 5%;
+}
+
+.fight-descr-val-2 {
+    width: 5%;
+}
+
+.fight-descr-val-3 {
+    width: 5%;
+}
+
+.fight-descr-val-4 {
+    width: 5%;
+}
+
+.fight-descr-val-5 {
+    width: 5%;
+}
+
+.fight-descr-val-6 {
+    width: 5%;
+}
+
+.fight-descr-val-7 {
+    width: 5%;
+}
+
+.fight-descr-val-8 {
+    width: 32.5%;
+}
+
+.fighter-warnings {
+    width: 55px;
+    height: 55px;
+    background: white;
+    text-align: center;
+    font-size: 24pt;
+}
+
+.warnings-border {
+    border-top: 1px solid white;
+    padding: 15px 0 0 0;
+}
+
+
+.logo-holder {
+    width: 150px;
+}
+
+.logo-holder-ge {
+    width: 150px;
+    padding: 35px 0 0 0;
+}
+
+.tablo-header {
+    display: flex;
+    border-bottom: 1px solid white;
+    margin: 0 0 25px 0;
+}
+.tablo-header > div {
+    margin: 0 auto;
+}
+
+.fights-header {
+    margin: 0 0 0 25%;}
+.fights-header > div {
+    display: inline;
+}
+
+.fights-header-blue {
+    color: blue;
+}
+
+.fights-header-red {
+    color: red;
+}
