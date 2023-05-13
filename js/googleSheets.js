@@ -19,8 +19,8 @@ var LAST_ROW =              100;
 var FIRST_COLUMN =          'B';
 var LAST_COLUMN =           'N';
 
-var CLIENT_ID = '948936341002-pcus1hp6ubiibjogkqjq1qnsdjh3scoo.apps.googleusercontent.com';
-var API_KEY = 'AIzaSyCle84La1X3DhTx2hZYUwHj86jIYVhyq4Q';
+//var CLIENT_ID = '948936341002-pcus1hp6ubiibjogkqjq1qnsdjh3scoo.apps.googleusercontent.com';
+//var API_KEY = 'AIzaSyCle84La1X3DhTx2hZYUwHj86jIYVhyq4Q';
 
 // Array of API discovery doc URLs for APIs used by the quickstart
 var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
@@ -67,9 +67,11 @@ function handleSignoutClick(event) {
  *  listeners.
  */
 function initClient() {
-    gapi.client.init({
-        apiKey: API_KEY,
-        clientId: CLIENT_ID,
+	gapi.client.init({
+        //apiKey: API_KEY,
+        //clientId: CLIENT_ID,
+		apiKey: this.apiKey.value,
+        clientId: this.clientID.value,
         discoveryDocs: DISCOVERY_DOCS,
         scope: SCOPES
     }).then(function () {
